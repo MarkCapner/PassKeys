@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import com.lbg.iau.model.AuthenticationFinishRequest;
-import com.lbg.iau.model.RegistrationFinishRequest;
-import com.lbg.iau.model.RegistrationStartRequest;
-import com.lbg.iau.model.UserCredential;
+
+import com.lbg.iau.model.*;
 import com.lbg.iau.repository.UserCredentialRepository;
 import com.lbg.iau.util.CredentialOptionsFactory;
 import com.lbg.iau.util.CredentialRequestOptionsFactory;
 import com.webauthn4j.WebAuthnManager;
 import com.webauthn4j.authenticator.AuthenticatorImpl;
+import com.webauthn4j.credential.CredentialRecord;
 import com.webauthn4j.data.*;
 import com.webauthn4j.data.attestation.authenticator.AttestedCredentialData;
 import com.webauthn4j.data.attestation.authenticator.COSEKey;
@@ -35,8 +34,8 @@ public class WebAuthnService {
 
     private final Map<String, Challenge> challengeMap = new ConcurrentHashMap<>();
 
-    private static final String RP_ID = "example.com";
-    private static final String ORIGIN = "https://example.com";
+    private static final String RP_ID = "localhost";
+    private static final String ORIGIN = "localhost";
 
     public PublicKeyCredentialCreationOptions beginRegistration(RegistrationStartRequest request) {
         Challenge challenge = new DefaultChallenge();

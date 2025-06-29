@@ -1,7 +1,7 @@
 package com.lbg.iau.model;
 
 import com.webauthn4j.credential.CredentialRecord;
-import com.webauthn4j.data.client.CollectedClientData;
+import com.webauthn4j.data.attestation.authenticator.AttestedCredentialData;
 
 public class StoredCredentialRecord implements CredentialRecord {
 
@@ -14,12 +14,6 @@ public class StoredCredentialRecord implements CredentialRecord {
         this.credentialPublicKey = credentialPublicKey;
         this.signCount = signCount;
     }
-
-    @Override
-    public CollectedClientData getClientData() {
-        return null; // or return a stored value if you have one
-    }
-
 
     @Override
     public byte[] getCredentialId() {
@@ -36,6 +30,57 @@ public class StoredCredentialRecord implements CredentialRecord {
         return signCount;
     }
 
-    // Optional: override other methods if needed
-}
+    @Override
+    public Boolean isUvInitialized() {
+        // Return false or implement according to your logic
+        return Boolean.FALSE;
+    }
 
+    @Override
+    public void setUvInitialized(boolean b) {
+
+    }
+
+    @org.jetbrains.annotations.Nullable
+    @Override
+    public Boolean isBackupEligible() {
+        return null;
+    }
+
+    @Override
+    public void setBackupEligible(boolean b) {
+
+    }
+
+    @Nullable
+    @Override
+    public Boolean isBackedUp() {
+        return null;
+    }
+
+    @Override
+    public void setBackedUp(boolean b) {
+
+    }
+    @Nullable
+    @Override
+    public byte[] getClientData() {
+        // Return null or implement according to your logic
+        return null;
+    }
+
+    @Override
+    public @org.jetbrains.annotations.NotNull AttestedCredentialData getAttestedCredentialData() {
+        return null;
+    }
+
+    @Override
+    public long getCounter() {
+        return 0;
+    }
+
+    @Override
+    public void setCounter(long l) {
+
+    }
+}
